@@ -8,7 +8,7 @@ from sklearn.utils import shuffle
 import matplotlib.pyplot as pyplot
 
 
-FTRAIN = './data/training.csv'
+FTRAIN = './data/training.csv' 
 FTEST = './data/test.csv'
 
 
@@ -111,7 +111,7 @@ net3 = NeuralNet(
 
     regression=True,
     batch_iterator_train=FlipBatchIterator(batch_size=128),
-    max_epochs=1000,
+    max_epochs=3000,
     verbose=1,
     )
 

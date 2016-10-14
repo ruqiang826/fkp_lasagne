@@ -5,9 +5,7 @@ Model 1
 ==============
 
 the first model is a simple model. 
->output:  
->    396       0.00225       0.00318      0.70744  0.05s    
->    397       0.00220       0.00329      0.66965  0.05s   
+>output:  >    396       0.00225       0.00318      0.70744  0.05s    >    397       0.00220       0.00329      0.66965  0.05s   
 >    398       0.00231       0.00363      0.63604  0.05s   
 >    399       0.00240       0.00361      0.66446  0.05s   
 >    400       0.00233       0.00337      0.69174  0.05s   
@@ -54,6 +52,16 @@ the third model is a example of Data augmentation. In the blog, Daniel simply fl
 >     998       0.00136       0.00159      0.85629  1.37s  
 >     999       0.00135       0.00159      0.85087  1.37s  
 >    1000       0.00135       0.00159      0.84736  1.37s  
+> ...  
+>    2993       0.00073       0.00128      0.56746  1.40s  
+>    2994       0.00072       0.00128      0.56492  1.38s  
+>    2995       0.00072       0.00129      0.56124  1.46s  
+>    2996       0.00073       0.00128      0.56692  1.41s  
+>    2997       0.00072       0.00128      0.56616  1.44s  
+>    2998       0.00072       0.00128      0.56334  1.41s  
+>    2999       0.00072       0.00128      0.56134  1.37s  
+>    3000       0.00072       0.00128      0.56403  1.37s  
+
 the advantage of model 3 is that it can get better valid loss after 3000 epochs,but at 1000 epochs, it is a little worse than model2, namely model3 have more potential, but computationally costly. How to fix it?
 ![model2 3](https://cloud.githubusercontent.com/assets/22812703/19378988/6502e6ce-9222-11e6-8b14-30a574a9de57.png)
 
@@ -83,5 +91,45 @@ so does model5 vs model3. valid loss of "0.00118" is the best outcome until now.
 >     999       0.00072       0.00118      0.60615  1.37s  
 >    1000       0.00072       0.00118      0.60537  1.37s  
 
+the comparision of model 4 and 5:
+![model45](https://cloud.githubusercontent.com/assets/22812703/19381345/c180aade-922d-11e6-9a0d-380d70505ec5.png)
 
+
+Model 6 and 7 using dropout
+==============
+Although we get a good result, there is still a problem of overfitting(train loss is significantly better than valid loss).`Dropout is a popular regularization technique for neural network, which is implemented in model6 and improved in model7.  
+We go directly to model7.
+
+> loss of model 7:  
+> Epoch  |  Train loss  |  Valid loss  |  Train / Val  
+> --------|--------------|--------------|---------------  
+>     50  |    0.004756  |    0.007043  |     0.675330   
+>    100  |    0.004440  |    0.005321  |     0.834432   
+>    250  |    0.003974  |    0.003928  |     1.011598   
+>    500  |    0.002574  |    0.002347  |     1.096366   
+>   1000  |    0.001861  |    0.001613  |     1.153796   
+>   1500  |    0.001558  |    0.001372  |     1.135849   
+>   2000  |    0.001409  |    0.001230  |     1.144821   
+>   2500  |    0.001295  |    0.001146  |     1.130188   
+>   3000  |    0.001195  |    0.001087  |     1.099271   
+
+the valid loss of model 7 in epoch 1000 is worse than model 5. but better than model 5 in epoch 3000. Another improvement is even at epoch 3000, model 7 do not overfit, which means we can do more iteration using model7.
+
+we set the max_epochs to 10000, the output is:
+
+>  Epoch  |  Train loss  |  Valid loss  |  Train / Val  
+> --------|--------------|--------------|---------------  
+>     50  |    0.004756  |    0.007027  |     0.676810  
+>    100  |    0.004439  |    0.005321  |     0.834323  
+>    500  |    0.002576  |    0.002346  |     1.097795  
+>   1000  |    0.001863  |    0.001614  |     1.154038  
+>   2000  |    0.001406  |    0.001233  |     1.140188  
+>   3000  |    0.001184  |    0.001074  |     1.102168  
+>   4000  |    0.001068  |    0.000983  |     1.086193  
+>   5000  |    0.000981  |    0.000920  |     1.066288  
+>   6000  |    0.000904  |    0.000884  |     1.021837  
+>   7000  |    0.000851  |    0.000849  |     1.002314  
+>   8000  |    0.000810  |    0.000821  |     0.985769  
+>   9000  |    0.000769  |    0.000803  |     0.957842  
+>  10000  |    0.000760  |    0.000787  |     0.966583  
 
