@@ -2,12 +2,12 @@
 facial keypoint detection from kaggle. code from http://danielnouri.org/notes/2014/12/17/using-convolutional-neural-nets-to-detect-facial-keypoints-tutorial/
 
 the first model is a simple model. 
-output:
-    396       0.00225       0.00318      0.70744  0.05s
-    397       0.00220       0.00329      0.66965  0.05s
-    398       0.00231       0.00363      0.63604  0.05s
-    399       0.00240       0.00361      0.66446  0.05s
-    400       0.00233       0.00337      0.69174  0.05s
+>output:
+>    396       0.00225       0.00318      0.70744  0.05s
+>    397       0.00220       0.00329      0.66965  0.05s
+>    398       0.00231       0.00363      0.63604  0.05s
+>    399       0.00240       0.00361      0.66446  0.05s
+>    400       0.00233       0.00337      0.69174  0.05s
 if you see the picture of loss, you will find the model overfitting, because the train loss get better, but the valid loss do not change.
 
 
