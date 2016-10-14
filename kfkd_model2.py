@@ -11,7 +11,6 @@ import matplotlib.pyplot as pyplot
 FTRAIN = './data/training.csv'
 FTEST = './data/test.csv'
 
-
 def load(test=False, cols=None):
     """Loads data from FTEST if *test* is True, otherwise from FTRAIN.
     Pass a list of *cols* if you're only interested in a subset of the
@@ -81,7 +80,7 @@ net2 = NeuralNet(
     update_momentum=0.9,
 
     regression=True,
-    max_epochs=1000,
+    max_epochs=3000,
     verbose=1,
     )
 
