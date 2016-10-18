@@ -3,14 +3,19 @@ import os
 import sys
 
 import numpy as np
+import pandas as pd
 from pandas.io.parsers import read_csv
 from sklearn.utils import shuffle
 import matplotlib.pyplot as pyplot
+import pdb
+import utils
+
 
 
 FTRAIN = './data/training.csv'
 FTEST = './data/test.csv'
 
+    
 
 def load(test=False, cols=None):
     """Loads data from FTEST if *test* is True, otherwise from FTRAIN.
@@ -65,7 +70,7 @@ net1 = NeuralNet(
     update_momentum=0.9,
 
     regression=True,  # flag to indicate we're dealing with regression problem
-    max_epochs=1000,  # we want to train this many epochs
+    max_epochs=400,  # we want to train this many epochs
     verbose=1,
     )
 
@@ -92,18 +97,22 @@ pyplot.xlabel("epoch")
 pyplot.ylabel("loss")
 pyplot.ylim(1e-3, 1e-2)
 pyplot.yscale("log")
-pyplot.show()
+#pyplot.show()
 
 
 X, _ = load(test=True)
 y_pred = net1.predict(X)
+#pdb.set_trace() 
 
-fig = pyplot.figure(figsize=(6, 6))
-fig.subplots_adjust(
-    left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
 
-for i in range(16):
-    ax = fig.add_subplot(4, 4, i + 1, xticks=[], yticks=[])
-    plot_sample(X[i], y_pred[i], ax)
 
-pyplot.show()
+#fig = pyplot.figure(figsize=(6, 6))
+#fig.subplots_adjust(
+#    left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+#
+#for i in range(16):
+#    ax = fig.add_subplot(4, 4, i + 1, xticks=[], yticks=[])
+#    plot_sample(X[i], y_pred[i], ax)
+#pyplot.show()
+
+utils.submission(y_pred)

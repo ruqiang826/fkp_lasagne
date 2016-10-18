@@ -3,10 +3,12 @@ import os
 import sys
 
 import numpy as np
+import pandas as pd
 from pandas.io.parsers import read_csv
 from sklearn.utils import shuffle
 import matplotlib.pyplot as pyplot
 import theano
+import utils
 
 
 FTRAIN = './data/training.csv'
@@ -140,7 +142,11 @@ net5 = NeuralNet(
 X, y = load2d()
 net5.fit(X, y)
 
+X, _ = load2d(test=True)
+y_pred = net5.predict(X)
+utils.submission(y_pred)
+
 import cPickle as pickle
-with open('net4.pickle', 'wb') as f:
+with open('net5.pickle', 'wb') as f:
     pickle.dump(net5, f, -1)
 

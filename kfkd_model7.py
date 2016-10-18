@@ -7,6 +7,7 @@ from pandas.io.parsers import read_csv
 from sklearn.utils import shuffle
 import matplotlib.pyplot as pyplot
 import theano
+import utils
 
 
 FTRAIN = './data/training.csv'
@@ -142,7 +143,7 @@ net7 = NeuralNet(
         AdjustVariable('update_learning_rate', start=0.03, stop=0.0001),
         AdjustVariable('update_momentum', start=0.9, stop=0.999),
         ],
-    max_epochs=1000,
+    max_epochs=10000,
     verbose=1,
     )
 
@@ -151,6 +152,10 @@ sys.setrecursionlimit(10000)
 
 X, y = load2d()
 net7.fit(X, y)
+
+X, _ = load2d(test=True)
+y_pred = net7.predict(X)
+utils.submission(y_pred)
 
 import cPickle as pickle
 with open('net7.pickle', 'wb') as f:

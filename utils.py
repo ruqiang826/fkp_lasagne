@@ -1,10 +1,14 @@
 
 
-FID = './data/IdLookupTable.csv'
 import pandas as pd
+import numpy as np
+from pandas.io.parsers import read_csv
 from sklearn.externals import joblib
+
+FID = './data/IdLookupTable.csv'
 def submission(y_pred):
     y_pred = y_pred * 48.0 + 48.0
+    y_pred = y_pred.clip(0, 96)
 
     lookup_table = read_csv(FID)
     cols = joblib.load('data/cols.pkl') 

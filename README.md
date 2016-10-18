@@ -19,6 +19,8 @@ the first model is a simple model.
 
 if you see the picture of loss, you will find the model overfitting, because the train loss get better, but the valid loss do not change.
 
+I submitted this result, and got a score of 4.02580, ranking at 78th.
+
 Model 2
 ==============
 the second model use convolutional neural nets.It is much more computationally costly. In my GTX960 GPU, it runs for 24 mins.
@@ -80,7 +82,7 @@ model4 is the faster version of model2, with 1000 ecpochs, it get better perform
 >     999       0.00046       0.00135      0.33906  1.35s  
 >    1000       0.00046       0.00135      0.33874  1.35s  
 
-so does model5 vs model3. valid loss of "0.00118" is the best outcome until now.
+so does model5 vs model3. valid loss of "0.00118" is the best outcome until now. It get a score of 3.20 and ranking 31st.
 >  output of model5:  
 >     993       0.00071       0.00118      0.60333  1.37s  
 >     994       0.00072       0.00118      0.60583  1.37s  
@@ -93,7 +95,6 @@ so does model5 vs model3. valid loss of "0.00118" is the best outcome until now.
 
 the comparision of model 4 and 5:
 ![model45](https://cloud.githubusercontent.com/assets/22812703/19381345/c180aade-922d-11e6-9a0d-380d70505ec5.png)
-
 
 Model 6 and 7 using dropout
 ==============
@@ -133,3 +134,4 @@ we set the max_epochs to 10000, the output is:
 >   9000  |    0.000769  |    0.000803  |     0.957842  
 >  10000  |    0.000760  |    0.000787  |     0.966583  
 
+This result scores 2.92 and rank 26th.
