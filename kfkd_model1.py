@@ -28,12 +28,18 @@ def load(test=False, cols=None):
     # The Image column has pixel values separated by space; convert
     # the values to numpy arrays:
     df['Image'] = df['Image'].apply(lambda im: np.fromstring(im, sep=' '))
+    # equal to :
+    # def tmp(im):
+    #     return np.fromstring(im, sep=' ')    
+    # df['Image'] = df['Image'].apply(tmp)
+ 
 
     if cols:  # get a subset of columns
         df = df[list(cols) + ['Image']]
 
     print(df.count())  # prints the number of values for each column
     df = df.dropna()  # drop all rows that have missing values in them
+    # these dropped data may be useful. to be improved.
 
     X = np.vstack(df['Image'].values) / 255.  # scale pixel values to [0, 1]
     X = X.astype(np.float32)
