@@ -39,6 +39,8 @@ def load(test=False, cols=None):
 
     print(df.count())  # prints the number of values for each column
     df = df.dropna()  # drop all rows that have missing values in them
+    print "after drop"
+    print(df.count())  # prints the number of values for each column
     # these dropped data may be useful. to be improved.
 
     X = np.vstack(df['Image'].values) / 255.  # scale pixel values to [0, 1]
